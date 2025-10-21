@@ -1,50 +1,155 @@
-# Welcome to your Expo app 👋
+Tood-o (Working Title)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple and interactive to-do list application built for modern web use.
+Live Demo: https://tood-o-u41a.vercel.app/
 
-## Get started
+✨ Features
 
-1. Install dependencies
+Add, edit, and remove tasks.
 
-   ```bash
-   npm install
-   ```
+Mark tasks as completed/incomplete.
 
-2. Start the app
+Responsive UI, works on desktop & mobile.
 
-   ```bash
-   npx expo start
-   ```
+Persistent storage (e.g., using localStorage or a backend).
 
-In the output, you'll find options to open the app in a
+Clean, minimal design for productivity.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+🧱 Tech Stack
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Frontend: React (or your chosen framework)
 
-## Get a fresh project
+Styling: CSS / SCSS / Tailwind (adjust accordingly)
 
-When you're ready, run:
+Data storage: localStorage or API backend
 
-```bash
-npm run reset-project
-```
+Deployment: Vercel (static/site-hosting)
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+🚀 Getting Started
+Prerequisites
 
-## Learn more
+Node.js (version ≥ 14 recommended)
 
-To learn more about developing your project with Expo, look at the following resources:
+npm or yarn
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Installation
+git clone <your-repo-url>
+cd <repo-folder>
+npm install
 
-## Join the community
+Running in development
+npm run dev
 
-Join our community of developers creating universal apps.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Visit http://localhost:3000 (or the port your dev server uses).
+
+Build & Production
+npm run build
+npm run start
+
+
+Or if configured for static export:
+
+npm run export
+
+🧩 How it Works
+
+The UI shows an input field for adding a new task.
+
+Tasks are stored (locally or via backend).
+
+Each task item shows: title, completion toggle, edit/delete controls.
+
+Completed tasks can be visually differentiated (strikethrough, faded, etc.).
+
+On reload, tasks persist (via localStorage key such as tasks or via API).
+
+Responsive layout: tasks stack vertically on mobile, side/list view on larger screens.
+
+📁 Project Structure
+.
+├─ src/
+│  ├─ components/
+│  │   ├─ TaskItem.tsx
+│  │   ├─ TaskList.tsx
+│  │   └─ TaskForm.tsx
+│  ├─ hooks/
+│  │   └─ useTasks.ts         # custom hook for task logic + storage
+│  ├─ utils/
+│  │   └─ storage.ts          # wrapper for localStorage or API calls
+│  ├─ styles/
+│  │   └─ App.css or tailwind.config.js
+│  └─ App.tsx
+├─ public/
+└─ package.json
+
+
+Adjust file names according to your stack (JS, TS, etc).
+
+🛠️ Useful Notes
+
+If using localStorage: wrap all reads/writes in a try/catch to handle unavailable storage (e.g., incognito mode).
+
+If you later migrate to a backend API: keep the same useTasks hook interface and swap the storage implementation.
+
+You may want to debounce input changes for edits to reduce frequent writes.
+
+For mobile UX: ensure tapping outside forms closes them; support keyboard for accessibility.
+
+🧪 Testing
+
+Unit tests for hook logic (adding/removing tasks, toggling completion).
+
+Snapshot or component tests for UI states (empty list, tasks exist, all completed).
+
+Manual QA: mobile viewport, latest browsers, keyboard navigation.
+
+📦 Scripts (adjust if you use Vite, Next.js, etc)
+{
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "start": "react-scripts start",
+    "lint": "eslint .",
+    "test": "jest"
+  }
+}
+
+🌐 Deployment
+
+Deployed via Vercel: push changes to your Git repo, link to Vercel, auto-build & deploy.
+Ensure any environment variables (if using backend) are set in your Vercel dashboard.
+
+🤝 Contributing
+
+Fork the repo
+
+Create a branch: git checkout -b feat/your-feature
+
+Commit your changes: git commit -m "feat: your feature"
+
+Push branch: git push origin feat/your-feature
+
+Open a PR
+
+📄 License
+
+Specify your license here (e.g., MIT). Include the full text in LICENSE file.
+
+🙏 Acknowledgments
+
+Thanks to the open-source community & any libs you’re using.
+
+Inspiration from minimal productivity apps and UI frameworks.
+
+🗺️ Roadmap
+
+User authentication & multi-device sync
+
+Categories or tagging of tasks
+
+Due-dates, reminders & push notifications
+
+Drag-and-drop reordering of tasks
+
+Dark mode / theme switch
